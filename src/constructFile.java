@@ -4,28 +4,22 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 
 class ConstructFile {
-    //private String fileName;
-    private static byte[] byteArray;
 
-   /* public ConstructFile(String fileName){
-        this.fileName = fileName;
-    } */
+    private byte[] byteArray;
 
-   public void readFromFile(String str) {
-       File currentFile = new File(str);
+    public void readFromFile(String fileName) {
        FileInputStream inputReader = null;
        try {
-           inputReader = new FileInputStream(currentFile);
+           inputReader = new FileInputStream(fileName);
        } catch (FileNotFoundException e) {
            e.printStackTrace();
        }
-       byte[] byteArray = new byte[(int) currentFile.length()];
+       byteArray = new byte[(int) new File(fileName).length()];
        try {
        inputReader.read(byteArray);
        } catch (IOException e) {
            e.printStackTrace();
        }
-       this.byteArray = byteArray;
    }
 
 
@@ -41,13 +35,15 @@ class ConstructFile {
         }
         return countWords;
     }
+
     public int countOfProposal(){
         int countProposal=0;
-        char[] charArray = new String(byteArray).toCharArray();
-        for(int i=0;i<charArray.length;i++)
-            if(charArray[i]=='.' || charArray[i]=='!' || charArray[i]=='?'){
-                countProposal++;
-            }
+        String data = new String(byteArray);
+        int size=data.length();
+        for(int i=0;i<size;i++)
+           if(data.charAt(i) == '!' || data.charAt(i) == '?' || data.charAt(i) == '.') {
+               countProposal++;
+           }
         return countProposal;
     }
 }
