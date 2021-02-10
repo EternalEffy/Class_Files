@@ -14,8 +14,12 @@ class ConstructFile {
        } catch (FileNotFoundException e) {
            e.printStackTrace();
        }
-       byteArray = new byte[(int) new File(fileName).length()];
-       try {
+        try {
+            byteArray = new byte[(inputReader.available())];
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        try {
        inputReader.read(byteArray);
        } catch (IOException e) {
            e.printStackTrace();
@@ -28,12 +32,8 @@ class ConstructFile {
     }
 
     public int countOfWords(){
-        int countWords=0;
         String [] data = new String(byteArray).split(" +");
-        for (int i=0; i<data.length; i++) {
-            countWords++;
-        }
-        return countWords;
+        return data.length;
     }
 
     public int countOfProposal(){
