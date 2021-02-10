@@ -2,7 +2,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
-class ConstructFile {
+class EFFY_ConstructFile {
 
     private byte[] byteArray;
 
@@ -14,7 +14,12 @@ class ConstructFile {
            e.printStackTrace();
        }
         try {
-       inputReader.read(byteArray = new byte[(inputReader.available())]);
+            byteArray = new byte[(inputReader.available())];
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        try {
+       inputReader.read(byteArray);
        } catch (IOException e) {
            e.printStackTrace();
        }
@@ -25,8 +30,9 @@ class ConstructFile {
         return new String(byteArray).length();
     }
 
-    public String[] countOfWords(){
-        return new String(byteArray).split(" +");
+    public int countOfWords(){
+        String [] data = new String(byteArray).split(" +");
+        return data.length;
     }
 
     public int countOfProposal(){

@@ -4,7 +4,7 @@ import java.util.Scanner;
 public class Files {
 
     public static void main(String arg[]){
-        ConstructFile myFile = new ConstructFile();
+        EFFY_ConstructFile myFile = new EFFY_ConstructFile();
         System.out.println("Введите имя файла");
 
         myFile.readFromFile(new Scanner(System.in).nextLine());
