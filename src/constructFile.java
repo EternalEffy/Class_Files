@@ -1,4 +1,3 @@
-import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -15,12 +14,7 @@ class ConstructFile {
            e.printStackTrace();
        }
         try {
-            byteArray = new byte[(inputReader.available())];
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        try {
-       inputReader.read(byteArray);
+       inputReader.read(byteArray = new byte[(inputReader.available())]);
        } catch (IOException e) {
            e.printStackTrace();
        }
@@ -31,16 +25,14 @@ class ConstructFile {
         return new String(byteArray).length();
     }
 
-    public int countOfWords(){
-        String [] data = new String(byteArray).split(" +");
-        return data.length;
+    public String[] countOfWords(){
+        return new String(byteArray).split(" +");
     }
 
     public int countOfProposal(){
         int countProposal=0;
         String data = new String(byteArray);
-        int size=data.length();
-        for(int i=0;i<size;i++)
+        for(int i=0;i<data.length();i++)
            if(data.charAt(i) == '!' || data.charAt(i) == '?' || data.charAt(i) == '.') {
                countProposal++;
            }
